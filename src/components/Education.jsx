@@ -11,7 +11,8 @@ const Education = () => {
             <h3 className='text-xl font-semibold md:text-2xl'>Schooling</h3>
             <p className='font-light text-lg
             text-gray-600'>Nalanda Academy, Kota</p>
-            <p className='text-sm text-gray-600'>Completed school Education in PCM stream</p>
+            <p className='text-sm text-gray-600'>Senior Secondary Education (PCM)
+Year of Completion: 2023</p>
             <span className='absolute -left-[11px] top-10 h-5 w-5 rounded-full bg-blue-500'></span>
           </div>
         </div>
