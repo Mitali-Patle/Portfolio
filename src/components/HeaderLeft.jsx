@@ -6,47 +6,50 @@ import {
   BiRightArrowAlt,
 } from "react-icons/bi";
 
+const navItems = [
+  { id: "home", label: "Home", icon: <BiHome /> },
+  { id: "education", label: "Education", icon: <BiBriefcase /> },
+  { id: "projects", label: "Projects", icon: <BiCode /> },
+  { id: "contact", label: "Contact", icon: <BiMailSend /> },
+];
+
 const HeaderLeft = () => {
   return (
-    <div className="hidden md:block w-1/4 h-full sticky top-0">
-      {/* Desktop Sidebar */}
-      <div className="h-full flex items-center justify-center bg-blue-950 text-white">
-        <ul className="flex flex-col gap-10">
-          {["home", "education", "projects", "contact"].map((item) => (
+    <div className="hidden md:block w-1/4 h-screen sticky top-0">
+      {/* Sidebar with gradient background */}
+      <div className="h-full flex items-center justify-center bg-gradient-to-b from-blue-900 via-blue-950 to-gray-900 text-white p-6 shadow-2xl">
+        <ul className="flex flex-col gap-10 w-full max-w-xs">
+          {navItems.map(({ id, label, icon }) => (
             <li
-              key={item}
-              className="flex items-center justify-start cursor-pointer font-medium transition-all duration-200 group sm:text-lg md:text-xl xl:text-3xl capitalize"
+              key={id}
+              className="group flex items-center gap-4 cursor-pointer transition-all duration-300 hover:translate-x-2"
             >
-              <BiRightArrowAlt className="text-4xl translate-x-5 opacity-0 transform transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" />
+              <div className="text-2xl group-hover:text-yellow-400 transition duration-300">
+                {icon}
+              </div>
               <a
-                href={`#${item}`}
-                className="transition-all duration-200 hover:translate-x-3"
+                href={`#${id}`}
+                className="text-xl capitalize font-semibold group-hover:text-yellow-400 transition duration-300"
               >
-                {item}
+                {label}
               </a>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Mobile Navbar */}
-      <div className="fixed left-0 right-0 top-0 z-10 flex justify-evenly bg-teal-600 p-5 text-white md:hidden">
-        <a href="#home" className="flex flex-col items-center justify-center">
-          <BiHome className="text-2xl" />
-          <span className="text-xs">Home</span>
-        </a>
-        <a href="#education" className="flex flex-col items-center justify-center">
-          <BiBriefcase className="text-2xl" />
-          <span className="text-xs">Education</span>
-        </a>
-        <a href="#projects" className="flex flex-col items-center justify-center">
-          <BiCode className="text-2xl" />
-          <span className="text-xs">Projects</span>
-        </a>
-        <a href="#contact" className="flex flex-col items-center justify-center">
-          <BiMailSend className="text-2xl" />
-          <span className="text-xs">Contact</span>
-        </a>
+      {/* Mobile Nav */}
+      <div className="fixed left-0 right-0 top-0 z-10 flex justify-evenly bg-gradient-to-r from-blue-900 to-teal-700 p-4 text-white md:hidden shadow-md">
+        {navItems.map(({ id, label, icon }) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            className="flex flex-col items-center text-xs"
+          >
+            <div className="text-xl">{icon}</div>
+            {label}
+          </a>
+        ))}
       </div>
     </div>
   );
